@@ -1,0 +1,34 @@
+datasource db {
+  provider = "postgres"
+  url = "postgresql://postgres:367912@localhost:5432/accounting_prisma"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+    id Int @id @default(autoincrement())
+    email String @unique
+    password String
+}
+
+model Shift {
+    id Int @id @default(autoincrement())
+    startedAt DateTime
+    finishedAt DateTime
+}
+
+model Item {
+    id Int @id @default(autoincrement())
+    name String @unique
+    price Int
+}
+
+model Sell {
+    id Int @id @default(autoincrement())
+    shiftId Int
+    itemId Int
+    price Int
+}
+
