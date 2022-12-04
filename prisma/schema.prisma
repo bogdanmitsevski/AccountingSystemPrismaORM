@@ -16,7 +16,7 @@ model User {
 model Shift {
     id Int @id @default(autoincrement())
     startedAt DateTime
-    finishedAt DateTime
+    finishedAt DateTime?
 }
 
 model Item {
