@@ -11,18 +11,24 @@ model User {
     id Int @id @default(autoincrement())
     email String @unique
     password String
+    createdAt DateTime @default(now())
+    updatedAt DateTime @default(now())
 }
 
 model Shift {
     id Int @id @default(autoincrement())
     startedAt DateTime
     finishedAt DateTime?
+    createdAt DateTime @default(now())
+    updatedAt DateTime @default(now())
 }
 
 model Item {
     id Int @id @default(autoincrement())
     name String @unique
     price Int
+    createdAt DateTime @default(now())
+    updatedAt DateTime @default(now())
 }
 
 model Sell {
@@ -30,5 +36,7 @@ model Sell {
     shiftId Int
     itemId Int
     price Int
+    createdAt DateTime @default(now())
+    updatedAt DateTime @default(now())
 }
 

@@ -36,6 +36,10 @@ class ShiftController {
                 }
             });
 
+            if(Object.keys(FindOpenShift).length == 0) {
+                res.status(400).json({message: 'Last Shift was already closed'});
+            }
+
             await prisma.shift.update({
                 where: {
                     id: FindOpenShift[0].id
@@ -56,7 +60,15 @@ class ShiftController {
 
     async getLastShift (req:express.Request, res:express.Response) {
         try {
-            res.json({message:'Hello, /getLastShift'});
+            const Shifts = await prisma.shift.count();
+            const LastShift = await prisma.shift.findMany();
+            const LastShiftId = LastShift[Shifts-1].id;
+            const getLastSell = await prisma.sell.findMany({
+                where: {
+                    shiftId: LastShiftId
+                }
+            });
+            res.json(getLastSell);
         }
         catch(e) {
             console.log(e);

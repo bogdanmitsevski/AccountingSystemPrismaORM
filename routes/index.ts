@@ -9,9 +9,9 @@ router.use('/createItem', require('../routes/itemRouter'));
 router.use('/createSell', require('../routes/sellRouter'));
 
 //shift
-router.use('/', require('../routes/shiftRouter'));
-router.use('/', require('../routes/shiftRouter'));
-router.use('/', require('../routes/shiftRouter'));
+router.use('/startShift', require('../routes/shiftRouter'));
+router.use('/finishShift', require('../routes/shiftRouter'));
+router.use('/getLastShift', require('../routes/shiftRouter'));
 
 //users
 router.use('/', require('../routes/userRouter'));

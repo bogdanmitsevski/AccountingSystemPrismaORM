@@ -34,7 +34,6 @@ const prisma = new PrismaClient;
                         price:price
                     }
                 });
-                //await newItem.save();
                 res.json({message:`New Item with NAME: ${name} was successfully created`});
             }
         }
